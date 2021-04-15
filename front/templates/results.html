@@ -1,7 +1,7 @@
 {% if results_list %}
 <ul>
     {% for product in results_list %}
-    <li>{{ product.name }}</li>
+    <li>{{ product.name }} {{product.nut}}</li>
     {% endfor %}
 </ul>
 {% else %}

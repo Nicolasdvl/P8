@@ -1,4 +1,4 @@
-from open_food_facts import OFF_requests
+from .open_food_facts import OFF_requests
 
 
 class Parser():
@@ -22,7 +22,7 @@ class Parser():
         name = product.get('product_name_fr')
         brand = product.get('brands')
         nutriscore = product.get('nutriscore_grade')
-        categories = product.get('categories')
+        categories = product.get('categories_tags')
         image = product.get('image_url')
 
         if (name and code and brand and nutriscore and categories and image) is None:
@@ -35,7 +35,7 @@ class Parser():
         info_product['name'] = product.get('product_name_fr')
         info_product['brand'] = product.get('brands')
         info_product['nutriscore'] = product.get('nutriscore_grade')
-        info_product['categories'] = product.get('categories')
+        info_product['categories'] = product.get('categories_tags')
         info_product['image'] = product.get('image_url')
         result = {product.get('code'): info_product}
         return result

@@ -1,5 +1,5 @@
 import requests
-from config import FROM_PAGE, TO_PAGE, PAGE_SIZE, URL
+from .config import FROM_PAGE, TO_PAGE, PAGE_SIZE, URL
 
 class OFF_requests:
     def __init__(self):
