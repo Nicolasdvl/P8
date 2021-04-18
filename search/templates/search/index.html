@@ -17,7 +17,8 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-triger">Pur Beurre</a>
+            <a class="navbar-brand js-scroll-triger"><img scr="/static/assets/img/logo_pur_beurre.png" alt="logo" />Pur
+                Beurre</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -26,9 +27,9 @@
                     <li class="nav-item">
 
                     </li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger">Services</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger">Mon compte</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger">Mes aliments</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger">Déconnexion</a></li>
                 </ul>
             </div>
         </div>
@@ -53,6 +54,29 @@
             </div>
         </div>
     </header>
+    <section class="page-section bg-primary">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">Collette et Rémy</h2>
+                    <hr class="divider light my-4" />
+                    <p class="text-white-50 mb-4">Pur Beurre est l'initiative de deux amoureux de la gastronomie
+                        française, Colette Tatou et Rémy, que vous avez déjà certainement rencontrés dans notre
+                        excellent restaurant Ratatouille. </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/search/static/assets/img/collette.png" alt="collette" />
+                            <a>Collette</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="/assets/img/remy.jpg" alt="collette" />
+                            <a>Rémy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 
 {% csrf_token %}
