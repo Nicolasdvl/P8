@@ -3,13 +3,12 @@ from products.models import Product
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'products/index.html')
-
-def results(request):
-    results_list = Product.objects.all()
-    context = {'results_list': results_list}
-    return render(request, 'results.html', context)
+def substitutes(request):
+    r = request.POST
+    print(r)
+    product = Product.objects.get(name=r['product_search'])
+    subs = {'prod': {'name': product.name}}
+    return render(request, 'products/substitutes.html', subs)
 
 def details(request):
     return HttpResponse("product details")

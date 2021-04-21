@@ -9,5 +9,5 @@ def index(request):
 
 def products_list(request):
     results_list = Product.objects.all()
-    names = [product.name for product in results_list]
+    names = [(product.name, product.id) for product in results_list]
     return JsonResponse(names, safe=False)
