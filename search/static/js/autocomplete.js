@@ -27,11 +27,17 @@ function autocomplete(inp, arr) {
                 b.innerHTML = "<strong>" + arr[i][0].substr(0, val.length) + "</strong>";
                 b.innerHTML += arr[i][0].substr(val.length);
                 /*insert a input field that will hold the current array item's value:*/
-                b.innerHTML += "<input type='hidden' value='" + arr[i][0] + "'>";
+                b.innerHTML += "<input type='hidden' value='" + arr[i][0] + "' product_id='" + arr[i][1] + "'>";
                 /*execute a function when someone clicks on the item value (DIV element):*/
                 b.addEventListener("click", function (e) {
                     /*insert the value for the autocomplete text field:*/
-                    inp.value = this.getElementsByTagName("input")[0].value;
+                    let product = this.getElementsByTagName("input")[0];
+                    inp.value = product.value;
+                    console.log(product)
+                    document.querySelector('#product_id').setAttribute('value', product.getAttribute("product_id"))
+                    hidden = document.querySelector('#product_id')
+                    console.log(hidden)
+                    concatenateIdInUrl(product);
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
                     closeAllLists();
@@ -39,6 +45,7 @@ function autocomplete(inp, arr) {
                 a.appendChild(b);
             }
         }
+
     });
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener("keydown", function (e) {
@@ -90,6 +97,14 @@ function autocomplete(inp, arr) {
                 x[i].parentNode.removeChild(x[i]);
             }
         }
+    }
+    function concatenateIdInUrl(product) {
+        /*concatenate product id on action url in form*/
+        var button = document.getElementById("submit")
+        button.addEventListener("click", function () {
+            var form = document.getElementById("form")
+            form.setAttribute("action", "/product/" + product.getAttribute("product_id") + "/")
+        })
     }
     /*execute a function when someone clicks in the document:*/
     document.addEventListener("click", function (e) {
