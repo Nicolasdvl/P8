@@ -25,11 +25,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <form autocomplete="off" action="{% url 'product_substitutes' %}">
-                            <div class="autocomplete" style="width:300px;">
-                                <input id="myInput" type="text" name="" placeholder="rechercher un produit">
-                            </div>
-                            <input type="submit">
+                        {% include 'search/nav.html' %}
                     </li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger">Mon compte</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger">Mes aliments</a></li>

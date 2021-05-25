@@ -15,11 +15,9 @@ function autocomplete(inp, arr) {
         a.setAttribute("class", "autocomplete-items");
         /*append the DIV element as a child of the autocomplete container:*/
         this.parentNode.appendChild(a);
-        console.log(arr);
         /*for each item in the array...*/
         for (i = 0; i < arr.length; i++) {
             /*check if the item starts with the same letters as the text field value:*/
-            console.log(arr[i]);
             if (arr[i][0].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 /*create a DIV element for each matching element:*/
                 b = document.createElement("DIV");
@@ -33,10 +31,9 @@ function autocomplete(inp, arr) {
                     /*insert the value for the autocomplete text field:*/
                     let product = this.getElementsByTagName("input")[0];
                     inp.value = product.value;
-                    console.log(product)
                     document.querySelector('#product_id').setAttribute('value', product.getAttribute("product_id"))
                     hidden = document.querySelector('#product_id')
-                    console.log(hidden)
+
                     concatenateIdInUrl(product);
                     /*close the list of autocompleted values,
                     (or any other open lists of autocompleted values:*/
@@ -113,6 +110,9 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing the products:*/
+/* récupérer valeur dans input
+ mettre la valeur dans parametre vue 
+ */
 var url = "/products_list";
 var products = [];
 const request = new Request(
@@ -127,7 +127,6 @@ fetch(request, { method: "POST", mode: 'same-origin' })
                     products.push(res[i]);
 
                 }
-                console.log(products)
             })
 
     });
