@@ -3,10 +3,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from products.models import Product, Category
 from off.off_parser import Parser
-    
+
 
 class Command(BaseCommand):
-
     def handle(self, *args, **options):
         parser = Parser()
         products = parser.main()
@@ -15,29 +14,34 @@ class Command(BaseCommand):
             insertion_error = self.insert_products(product_code, product)
             if insertion_error:
                 continue
-            categories_list = product.get('categories')
+            categories_list = product.get("categories")
             self.insert_categories(categories_list)
             for category in categories_list:
                 self.insert_product_categories(product_code, category)
-            
-    def insert_products(self, code:int, product:dict):
+
+    def insert_products(self, code: int, product: dict):
         code = code
-        name = product.get('name')
-        brand = product.get('brand')
-        nutriscore = product.get('nutriscore')
-        image = product.get('image')
-        try: 
-            add = Product(id=code, name=name, brand=brand, nutriscore=nutriscore, image=image)
+        name = product.get("name")
+        brand = product.get("brand")
+        nutriscore = product.get("nutriscore")
+        image = product.get("image")
+        try:
+            add = Product(
+                id=code,
+                name=name,
+                brand=brand,
+                nutriscore=nutriscore.upper(),
+                image=image,
+            )
             add.save()
         except IntegrityError:
             return True
         else:
             return False
-            
 
     def insert_categories(self, categories_list: list):
         for category in categories_list:
-            try: 
+            try:
                 row = Category.objects.get(name=category)
             except Category.DoesNotExist:
                 add = Category(name=category)
@@ -47,4 +51,3 @@ class Command(BaseCommand):
         product = Product.objects.get(id=product_code)
         category = Category.objects.get(name=category)
         product.categories.add(category.id)
-    

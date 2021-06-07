@@ -18,7 +18,7 @@
 
 <body>
 
-    {% include 'search/nav.html' %}
+    {% include 'core/nav.html' %}
 
     <section class="page-section" id="substitues">
         <div class="container">
@@ -33,8 +33,12 @@
                 {% for substitute in substitutes %}
                 <div class="col">
                     <img src={{substitute.image}}>
-                    <a href="{% url 'product_details' %}">{{substitute.name}}</a>
-                    <a>{{substitute.nutriscore}}</a>
+                    <br>
+                    <span>
+                        <a href="{% url 'product_details' %}">{{substitute.name}}</a>
+                        <br>
+                        <a>{{substitute.nutriscore}}</a>
+                    </span>
                 </div>
                 {% endfor %}
             </div>
