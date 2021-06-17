@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "products.apps.ProductsConfig",
     "off.apps.OffConfig",
     "search.apps.SearchConfig",
+    "authentification.apps.AuthentificationConfig",
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,12 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+
+AUTHENTICATION_BACKENDS = [
+    "authentification.authenticate.EmailAuth",
+]
+
+AUTH_USER_MODEL = "authentification.User"
 
 
 # Password validation
