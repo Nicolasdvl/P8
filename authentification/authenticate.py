@@ -7,11 +7,11 @@ UserModel = (
 
 
 class EmailAuth:
-    """
-    Email authentication.
-    """
+    """Email authentication."""
 
     def authenticate(self, request, email=None, password=None, **kwargs):
+        print("REACH authenticate ========")
+        print(password)
         if email is None:
             email = kwargs.get(UserModel.EMAIL_FIELD)
         try:
@@ -21,9 +21,13 @@ class EmailAuth:
             # difference between an existing and a nonexistent user (#20760).
             UserModel().set_password(password)
         else:
+            print("REACH userrrr")
+            print(self.user_can_authenticate(user))
+            print(user.check_password(password))
             if user.check_password(password) and self.user_can_authenticate(
                 user
             ):
+                print("USER CAN AUTH")
                 return user
 
     def user_can_authenticate(self, user):
