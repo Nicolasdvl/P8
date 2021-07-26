@@ -5,8 +5,8 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-triger"><img src="{% static '/assets/img/logo_pur_beurre.png' %}" alt="logo"
-                id="logo_img" />Pur
+        <a class="navbar-brand js-scroll-triger" href="/"><img src="{% static '/assets/img/logo_pur_beurre.png' %}"
+                alt="logo" id="logo_img" />Pur
             Beurre</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -17,15 +17,15 @@
                 <li class="nav-item">
                     {% include 'search/form.html' %}
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger">Mon compte</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="user">Mon compte</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger">Mes aliments</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/logout">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout">Déconnexion</a></li>
                 {% else %}
                 <li class="nav-item">
                     {% include 'search/form.html' %}
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Se connecter</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signup">Créer un compte</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login">Se connecter</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="signup">Créer un compte</a></li>
                 {% endif %}
             </ul>
         </div>

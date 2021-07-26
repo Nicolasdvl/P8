@@ -1,14 +1,21 @@
+"""
+Parse results from open_food_facts.py requests.
+
+Check if data is valid and formate them in order to commit them in table.
+"""
 from .open_food_facts import OFF_requests
 
 
-class Parser():
+class Parser:
+    """Contains functions that valid and formate data."""
 
     def main(self):
+        """Call functions to process the parsing."""
         off = OFF_requests()
         data = off.collect_data()
         valid_products = {}
-        for page in data :
-            products = data[page].get('products')
+        for page in data:
+            products = data[page].get("products")
             if products is None:
                 continue
             for product in products:
@@ -17,26 +24,42 @@ class Parser():
                     valid_products.update(product)
         return valid_products
 
-    def is_it_valid(self, product:dict) -> bool:
-        code = product.get('code')
-        name = product.get('product_name_fr')
-        brand = product.get('brands')
-        nutriscore = product.get('nutriscore_grade')
-        categories = product.get('categories_tags')
-        image = product.get('image_url')
+    def is_it_valid(self, product: dict) -> bool:
+        """Return True if values wanted exists."""
+        code = product.get("code")
+        name = product.get("product_name_fr")
+        brand = product.get("brands")
+        nutriscore = product.get("nutriscore_grade")
+        categories = product.get("categories_tags")
+        image = product.get("image_url")
 
-        if (name and code and brand and nutriscore and categories and image) is None:
+        if (
+            name and code and brand and nutriscore and categories and image
+        ) is None:
             return False
         else:
             return True
 
     def formate(self, product):
-        info_product = {}
-        info_product['name'] = product.get('product_name_fr')
-        info_product['brand'] = product.get('brands')
-        info_product['nutriscore'] = product.get('nutriscore_grade')
-        info_product['categories'] = product.get('categories_tags')
-        info_product['image'] = product.get('image_url')
-        result = {product.get('code'): info_product}
-        return result
+        """
+        Return formated dict populate with data.
 
+        {
+            int : {
+                'name': str,
+                'brand': str,
+                'nutriscore': str,
+                'categories': list,
+                'image': str
+            }
+            ...
+        }
+        """
+        info_product = {}
+        info_product["name"] = product.get("product_name_fr")
+        info_product["brand"] = product.get("brands")
+        info_product["nutriscore"] = product.get("nutriscore_grade")
+        info_product["categories"] = product.get("categories_tags")
+        info_product["image"] = product.get("image_url")
+        result = {product.get("code"): info_product}
+        return result

@@ -1,9 +1,8 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from products.models import Product, Category
 
 
 class Command(BaseCommand):
-
     def handle(self, *args, **options):
         products = Product.objects.all()
         for product in products:

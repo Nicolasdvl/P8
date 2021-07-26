@@ -11,7 +11,7 @@ from products.models import Product
 
 
 def products_list(request):
-    """Return a json that contain name and id of all products located in Product table."""
+    """Return a json with name and id of all products."""
     results_list = Product.objects.all()
     names = [(product.name, product.id) for product in results_list]
     return JsonResponse(names, safe=False)

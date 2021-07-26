@@ -29,7 +29,10 @@ SECRET_KEY = os.getenv("DJANGO_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    ".localhost",
+    "127.0.0.1",
+]
 
 
 # Application definition
@@ -46,7 +49,10 @@ INSTALLED_APPS = [
     "off.apps.OffConfig",
     "search.apps.SearchConfig",
     "authentification.apps.AuthentificationConfig",
+    "crispy_forms",
 ]
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

@@ -2,6 +2,7 @@
 
 <html lang="fr">
 {% load static %}
+{% load crispy_forms_tags %}
 
 <head>
     <meta charset="utf-8">
@@ -22,7 +23,7 @@
             <form method="post" id="login_form">
                 <div>
                     {% csrf_token %}
-                    {{ LoginForm }}
+                    {{ LoginForm | crispy }}
                     <input type="submit" id="submit">
                 </div>
             </form>

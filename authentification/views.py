@@ -9,7 +9,6 @@ from django.shortcuts import render, redirect
 from authentification.forms.signup import SignupForm
 from authentification.forms.login import LoginForm
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.hashers import make_password
 
 
 def signup(request):
@@ -18,9 +17,8 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.set_password(make_password(form.cleaned_data["password"]))
+            user.set_password(request.POST["password"])
             user.save()
-
             return redirect("index")
     else:
         form = SignupForm()
@@ -33,15 +31,10 @@ def login_user(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
         if form.is_valid():
-            print("REACH===========================")
             email = request.POST["email"]
             password = request.POST["password"]
-            print(password)
-
             user = authenticate(request, email=email, password=password)
-            print(user)
             if user is not None:
-                print("REACH login==================")
                 login(request, user)
                 return redirect("index")
     else:
@@ -54,3 +47,8 @@ def logout_user(request):
     """Call the logout function and redirect to the index page."""
     logout(request)
     return redirect("index")
+
+
+def user_page(request):
+    """Render user.html."""
+    return render(request, "authentification/user.html")

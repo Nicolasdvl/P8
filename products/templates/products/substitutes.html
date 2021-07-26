@@ -23,25 +23,25 @@
     <section class="page-section" id="substitues">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
+                <div class="card">
                     <img src={{product.image}}>
+                    <div class="card-body"></div>
                     <a href="{% url 'product_details' %}">{{product.name}}</a>
                     <a>{{product.nutriscore}}</a>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3">
-                {% for substitute in substitutes %}
-                <div class="col">
-                    <img src={{substitute.image}}>
-                    <br>
-                    <span>
-                        <a href="{% url 'product_details' %}">{{substitute.name}}</a>
-                        <br>
-                        <a>{{substitute.nutriscore}}</a>
-                    </span>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3">
+            {% for substitute in substitutes %}
+            <div class="card">
+                <img src={{substitute.image}}>
+                <div class="card-body">
+                    <a href="{% url 'product_details' %}">{{substitute.name}}</a>
+                    <a>{{substitute.nutriscore}}</a>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
+        </div>
     </section>
 </body>
 

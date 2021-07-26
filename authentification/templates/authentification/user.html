@@ -1,9 +1,5 @@
-<!doctype html>
-
 <html lang="fr">
 {% load static %}
-{% load crispy_forms_tags %}
-
 
 <head>
     <meta charset="utf-8">
@@ -17,20 +13,16 @@
 
 </head>
 
+
 <body>
-    .asteriskField {
-    display: none;
-    }
     {% include 'core/nav.html' %}
-    <section class="page-section" id="signup">
+    <section class="page-section" id="user_account">
         <div class="container">
-            <form action="/signup" method="post" id="signup_form">
-                <div>
-                    {% csrf_token %}
-                    {{ SignupForm | crispy}}
-                    <input type="submit" id="submit">
-                </div>
-            </form>
+            {% if user.is_authenticated %}
+            <p> Bienvenue {{user.username}}</p>
+            {% else %}
+            <p>Vous êtes déconnecté. Cliquez <a href="login">ici</a> pour vous connecter.</p>
+            {% endif %}
         </div>
     </section>
 </body>

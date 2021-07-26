@@ -13,6 +13,7 @@ class Category(models.Model):
     name = models.CharField(max_length=200, unique=True)
 
     def __str__(self):
+        """Allow objects display."""
         return self.name
 
 
@@ -38,9 +39,11 @@ class Product(models.Model):
     categories = models.ManyToManyField(Category)
 
     def __str__(self):
+        """Allow objects display."""
         return self.name
 
     def get_subs_list(self):
+        """Return a list of the 6 more relevant substitutes."""
         categories = self.categories.all()
         categories_list = []
         for category in categories:
@@ -61,5 +64,5 @@ class Product(models.Model):
         return substitutes
 
     def sort_by_this(self, element):
-        """Use as key to sort elements in a list by the first value of a tuple."""
+        """Use as key to sort elements in a list by the first value."""
         return element[0]
