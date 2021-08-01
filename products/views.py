@@ -6,6 +6,8 @@ This response can be the HTML contents of a Web page, or a redirect,
 or a 404 error, or an XML document, or an image . . .
 """
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from authentification.models import User
 from products.models import Product
 from search.search import SearchForm
 
@@ -21,9 +23,25 @@ def substitutes(request, id):
         "substitutes": product.get_subs_list(),
         "form": form,
     }
+    if "submit" in request.POST:
+        submit = request.POST.get("submit")
+        submit = submit.split()
+        product = Product.objects.get(id=submit[0])
+        user = User.objects.get(id=submit[1])
+        user.substitutes_saved.add(product)
+        user.save()
     return render(request, "products/substitutes.html", context)
 
 
-def details(request):
-    """Return a html page."""
-    return render(request, "products/details.html")
+def details(request, id):
+    """Return a html page with details of a product selected."""
+    product = Product.objects.get(id=id)
+    context = {"product": product}
+    return render(request, "products/details.html", context)
+
+
+@login_required()
+def my_substitutes(request, id):
+    user = User.objects.get(id=id)
+    context = {"products": user.get_saves()}
+    return render(request, "products/saves.html", context)

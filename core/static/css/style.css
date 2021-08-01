@@ -18,3 +18,27 @@
     background: rgb(196, 85, 37);
 }
 
+.product_container{
+}
+
+.card{
+    height: 40vh;
+}
+
+.card-header{
+    width:100%;
+    height: 75%;
+}
+
+.card-body{
+    height: 20%;
+    width: 100%;
+    background-color: rgba(200,200,200,0.5);
+}
+
+.product_img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+

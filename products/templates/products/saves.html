@@ -19,7 +19,10 @@
     {% include 'core/nav.html' %}
     <section class="page-section">
         <div class="container">
-            <h1>{{product.name}}</h1>
+            {% for product in products %}
+            <p>{{product.name}}</p>
+            {% endfor %}
+
         </div>
     </section>
 </body>

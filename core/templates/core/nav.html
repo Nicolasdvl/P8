@@ -18,14 +18,18 @@
                     {% include 'search/form.html' %}
                 </li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="user">Mon compte</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger">Mes aliments</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="logout">Déconnexion</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'my_substitutes' user.id %}">Mes
+                        aliments</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Déconnexion</a>
+                </li>
                 {% else %}
                 <li class="nav-item">
                     {% include 'search/form.html' %}
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login">Se connecter</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="signup">Créer un compte</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Se connecter</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">Créer un compte</a>
+                </li>
                 {% endif %}
             </ul>
         </div>

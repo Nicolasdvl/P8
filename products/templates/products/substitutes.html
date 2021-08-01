@@ -21,23 +21,40 @@
     {% include 'core/nav.html' %}
 
     <section class="page-section" id="substitues">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="card">
-                    <img src={{product.image}}>
-                    <div class="card-body"></div>
-                    <a href="{% url 'product_details' %}">{{product.name}}</a>
-                    <a>{{product.nutriscore}}</a>
+        <div class="product_container">
+            <div class="badge rounded-circle badge-primary text-white">
+                <a>{{product.nutriscore}}</a>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <img class="product_img" src={{product.image}}>
+                </div>
+                <div class="card-body">
+                    <a href="{% url 'product_details' product.id %}">{{product.name}}</a>
                 </div>
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-3">
             {% for substitute in substitutes %}
-            <div class="card">
-                <img src={{substitute.image}}>
-                <div class="card-body">
-                    <a href="{% url 'product_details' %}">{{substitute.name}}</a>
+            <div class="product_container">
+                <div class="badge rounded-circle badge-primary text-white">
                     <a>{{substitute.nutriscore}}</a>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <img class="product_img" src={{substitute.image}}>
+                    </div>
+                    <div class="card-body">
+                        <a href="{% url 'product_details' substitute.id %}">{{substitute.name}}</a>
+                        {% if user.is_authenticated %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary btn-xl js-scroll-trigger" name="submit"
+                                value="{{substitute.id}} {{user.id}}"> Sauvegarder le produit</button>
+                        </form>
+
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             {% endfor %}

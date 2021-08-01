@@ -18,3 +18,12 @@ class User(AbstractUser):
         gettext_lazy("email address"), blank=True, unique=True
     )
     substitutes_saved = models.ManyToManyField(Product)
+
+    def __str__(self):
+        """Allow objects display."""
+        return self.name
+
+    def get_saves(self):
+        """Return a list of all substitutes saved by an user."""
+        my_substitutes = self.substitutes_saved.all()
+        return my_substitutes
