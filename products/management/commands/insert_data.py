@@ -3,12 +3,14 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
 from products.models import Product, Category
 from off.off_parser import Parser
+from progress.spinner import PieSpinner
 
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
         parser = Parser()
         products = parser.main()
+        spinner = PieSpinner("Insertion des données...", suffix=" ")
         for product_code in products:
             product = products[product_code]
             insertion_error = self.insert_products(product_code, product)
@@ -18,6 +20,8 @@ class Command(BaseCommand):
             self.insert_categories(categories_list)
             for category in categories_list:
                 self.insert_product_categories(product_code, category)
+            spinner.next()
+        spinner.finish()
 
     def insert_products(self, code: int, product: dict):
         code = code

@@ -21,7 +21,7 @@ class User(AbstractUser):
 
     def __str__(self):
         """Allow objects display."""
-        return self.name
+        return self.username
 
     def get_saves(self):
         """Return a list of all substitutes saved by an user."""

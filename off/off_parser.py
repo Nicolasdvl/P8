@@ -4,6 +4,7 @@ Parse results from open_food_facts.py requests.
 Check if data is valid and formate them in order to commit them in table.
 """
 from .open_food_facts import OFF_requests
+from progress.bar import ChargingBar
 
 
 class Parser:
@@ -14,6 +15,7 @@ class Parser:
         off = OFF_requests()
         data = off.collect_data()
         valid_products = {}
+        bar = ChargingBar("Nettoyage des données... ")
         for page in data:
             products = data[page].get("products")
             if products is None:
@@ -22,6 +24,8 @@ class Parser:
                 if self.is_it_valid(product):
                     product = self.formate(product)
                     valid_products.update(product)
+            bar.next()
+        bar.finish()
         return valid_products
 
     def is_it_valid(self, product: dict) -> bool:
@@ -34,8 +38,13 @@ class Parser:
         image = product.get("image_url")
 
         if (
-            name and code and brand and nutriscore and categories and image
-        ) is None:
+            name is None
+            or code is None
+            or brand is None
+            or nutriscore is None
+            or categories is None
+            or image is None
+        ):
             return False
         else:
             return True
@@ -58,7 +67,7 @@ class Parser:
         info_product = {}
         info_product["name"] = product.get("product_name_fr")
         info_product["brand"] = product.get("brands")
-        info_product["nutriscore"] = product.get("nutriscore_grade")
+        info_product["nutriscore"] = product.get("nutriscore_grade").upper()
         info_product["categories"] = product.get("categories_tags")
         info_product["image"] = product.get("image_url")
         result = {product.get("code"): info_product}
