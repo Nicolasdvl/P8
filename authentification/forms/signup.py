@@ -41,14 +41,19 @@ class SignupForm(forms.ModelForm):
         username = cleaned_data.get("username")
         email = cleaned_data.get("email")
 
-        existant_username = User.objects.get(username=username)
-        print(existant_username)
-        if existant_username is not None:
+        try:
+            User.objects.get(username=username)
+        except User.DoesNotExist:
+            pass
+        else:
             print("reach")
             raise ValidationError(
                 "Un compte possède déjà ce nom d'utilisateur."
             )
 
-        existant_email = User.objects.get(email=email)
-        if existant_email is not None:
+        try:
+            User.objects.get(email=email)
+        except User.DoesNotExist:
+            pass
+        else:
             raise ValidationError("Un compte a déjà été créé avec cet email.")

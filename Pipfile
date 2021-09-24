@@ -9,6 +9,7 @@ black = "*"
 pytest = "*"
 mypy = "*"
 pydocstyle = "*"
+coverage = "*"
 
 [packages]
 django = "*"

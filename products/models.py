@@ -4,6 +4,9 @@ Django models for products app.
 Contains the essential fields and behaviors of the data stored.
 """
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class Category(models.Model):
@@ -37,6 +40,7 @@ class Product(models.Model):
     )
     image = models.CharField(max_length=200)
     categories = models.ManyToManyField(Category)
+    users_saves = models.ManyToManyField(User)
 
     def __str__(self):
         """Allow objects display."""
@@ -47,10 +51,9 @@ class Product(models.Model):
         categories = self.categories.all()
         categories_list = []
         for category in categories:
-            if len(category.product_set.all()) > 15:
-                categories_list.append(
-                    (len(category.product_set.all()), category.name)
-                )
+            categories_list.append(
+                (len(category.product_set.all()), category.name)
+            )
         categories_list.sort(key=self.sort_by_this, reverse=False)
         relevant_category = Category.objects.get(name=categories_list[0][1])
         products_list = []

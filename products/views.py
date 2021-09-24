@@ -28,8 +28,8 @@ def substitutes(request, id):
         submit = submit.split()
         product = Product.objects.get(id=submit[0])
         user = User.objects.get(id=submit[1])
-        user.substitutes_saved.add(product)
-        user.save()
+        product.users_saves.add(user)
+        product.save()
     return render(request, "products/substitutes.html", context)
 
 
@@ -42,6 +42,7 @@ def details(request, id):
 
 @login_required()
 def my_substitutes(request, id):
+    """Return a html page with a list of products saved by user."""
     user = User.objects.get(id=id)
     context = {"products": user.get_saves()}
     return render(request, "products/saves.html", context)
