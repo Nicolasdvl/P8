@@ -10,10 +10,11 @@ from progress.bar import ChargingBar
 class Parser:
     """Contains functions that valid and formate data."""
 
-    def main(self):
+    def main(self) -> dict:
         """Call functions to process the parsing."""
         off = OFF_requests()
         data = off.collect_data()
+        print(f"from main, data = {data}")
         valid_products = {}
         bar = ChargingBar("Nettoyage des données... ")
         for page in data:
@@ -21,11 +22,13 @@ class Parser:
             if products is None:
                 continue
             for product in products:
+                print(f"from main, arg given to is_it_valid {product}")
                 if self.is_it_valid(product):
                     product = self.formate(product)
                     valid_products.update(product)
             bar.next()
         bar.finish()
+        print(f"from main, valid_products = {valid_products}")
         return valid_products
 
     def is_it_valid(self, product: dict) -> bool:
@@ -49,7 +52,7 @@ class Parser:
         else:
             return True
 
-    def formate(self, product):
+    def formate(self, product: dict) -> dict:
         """
         Return formated dict populate with data.
 

@@ -23,8 +23,8 @@ def substitutes(request, id):
         "substitutes": product.get_subs_list(),
         "form": form,
     }
-    if "submit" in request.POST:
-        submit = request.POST.get("submit")
+    if "submit_save" in request.POST:
+        submit = request.POST.get("submit_save")
         submit = submit.split()
         product = Product.objects.get(id=submit[0])
         user = User.objects.get(id=submit[1])
@@ -40,9 +40,9 @@ def details(request, id):
     return render(request, "products/details.html", context)
 
 
-@login_required()
-def my_substitutes(request, id):
+@login_required
+def my_substitutes(request):
     """Return a html page with a list of products saved by user."""
-    user = User.objects.get(id=id)
+    user = request.user
     context = {"products": user.get_saves()}
     return render(request, "products/saves.html", context)

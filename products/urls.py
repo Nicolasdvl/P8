@@ -11,7 +11,7 @@ urlpatterns = [
     path("product/<int:id>/", views.substitutes, name="product_substitutes"),
     path("product/<int:id>/details/", views.details, name="product_details"),
     path(
-        "account/<int:id>/my_substitutes",
+        "account/my_substitutes/",
         views.my_substitutes,
         name="my_substitutes",
     ),

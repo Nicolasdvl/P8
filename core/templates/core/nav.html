@@ -17,18 +17,24 @@
                 <li class="nav-item">
                     {% include 'search/form.html' %}
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="user">Mon compte</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'my_substitutes' user.id %}">Mes
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'account' %}"
+                        name="my_account">Mon compte</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'my_substitutes' %}"
+                        name="my_substitutes">Mes
                         aliments</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Déconnexion</a>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"
+                        name="logout">Déconnexion</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
                     {% include 'search/form.html' %}
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}">Se connecter</a>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}" name="login">Se
+                        connecter</a>
                 </li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">Créer un compte</a>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'signup' %}" name="signup">Créer
+                        un compte</a>
                 </li>
                 {% endif %}
             </ul>

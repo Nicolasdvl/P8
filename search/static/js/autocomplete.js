@@ -97,7 +97,7 @@ function autocomplete(inp, arr) {
     }
     function concatenateIdInUrl(product) {
         /*concatenate product id on action url in form*/
-        var button = document.getElementById("submit")
+        var button = document.getElementById("submit_search")
         button.addEventListener("click", function () {
             var form = document.getElementById("form")
             form.setAttribute("action", "/product/" + product.getAttribute("product_id") + "/")
@@ -132,5 +132,6 @@ fetch(request, { method: "POST", mode: 'same-origin' })
     });
 
 
-/*initiate the autocomplete function on the "myInput" element, and pass along the array as possible autocomplete values:*/
-autocomplete(document.getElementById("myInput"), products);
+/*initiate the autocomplete function on the "search_input" element, and pass along the array as possible autocomplete values:*/
+autocomplete(document.getElementsByName("search_input")[0], products);
+autocomplete(document.getElementsByName("search_input")[1], products);

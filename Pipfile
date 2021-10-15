@@ -16,6 +16,7 @@ django = "*"
 requests = "*"
 python-dotenv = "*"
 progress = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.7"
