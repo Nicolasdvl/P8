@@ -14,21 +14,18 @@ class Parser:
         """Call functions to process the parsing."""
         off = OFF_requests()
         data = off.collect_data()
-        print(f"from main, data = {data}")
         valid_products = {}
-        bar = ChargingBar("Nettoyage des données... ")
+        bar = ChargingBar("Nettoyage des données... ", max=len(data))
         for page in data:
             products = data[page].get("products")
             if products is None:
                 continue
             for product in products:
-                print(f"from main, arg given to is_it_valid {product}")
                 if self.is_it_valid(product):
                     product = self.formate(product)
                     valid_products.update(product)
             bar.next()
         bar.finish()
-        print(f"from main, valid_products = {valid_products}")
         return valid_products
 
     def is_it_valid(self, product: dict) -> bool:
