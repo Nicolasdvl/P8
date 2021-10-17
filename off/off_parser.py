@@ -29,7 +29,7 @@ class Parser:
         return valid_products
 
     def is_it_valid(self, product: dict) -> bool:
-        """Return True if values wanted exists."""
+        """Return True if wanted values exists."""
         code = product.get("code")
         name = product.get("product_name_fr")
         brand = product.get("brands")
@@ -46,6 +46,8 @@ class Parser:
             or image is None
         ):
             return False
+        elif len(name) > 200 or len(brand) > 200 or len(image) > 200:
+            return False
         else:
             return True
 
@@ -60,15 +62,19 @@ class Parser:
                 'nutriscore': str,
                 'categories': list,
                 'image': str
-            }
+            },
             ...
         }
         """
+        categories_list = product.get("categories_tags")
+        for category_name in categories_list:
+            if len(category_name) > 200:
+                categories_list.remove(category_name)
         info_product = {}
         info_product["name"] = product.get("product_name_fr")
         info_product["brand"] = product.get("brands")
         info_product["nutriscore"] = product.get("nutriscore_grade").upper()
-        info_product["categories"] = product.get("categories_tags")
+        info_product["categories"] = categories_list
         info_product["image"] = product.get("image_url")
         result = {product.get("code"): info_product}
         return result
