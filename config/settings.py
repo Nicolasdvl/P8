@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import django_heroku
 
 load_dotenv()
 
@@ -154,3 +155,6 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
