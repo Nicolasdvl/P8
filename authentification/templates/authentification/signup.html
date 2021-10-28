@@ -27,7 +27,7 @@
             <form action="/signup" method="post" id="signup_form">
                 <div>
                     {% csrf_token %}
-                    {{ SignupForm | crispy}}
+                    {{ SignupForm }}
                     <input type="submit" name="submit_new_user" id="submit">
                 </div>
             </form>
