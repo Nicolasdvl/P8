@@ -34,8 +34,7 @@ class TestSelenium(StaticLiveServerTestCase):
         cls.driver.quit()
         super().tearDownClass()
 
-    """
-   def test_login_logout(self):
+    def test_login_logout(self):
         self.driver.get(f"{self.live_server_url}/")
         self.driver.find_element_by_name("login").click()
         email_input = self.driver.find_element_by_name("email")
@@ -91,7 +90,6 @@ class TestSelenium(StaticLiveServerTestCase):
         self.driver.implicitly_wait(5)
         self.assertEqual(self.driver.current_url, f"{self.live_server_url}/")
         self.driver.find_element_by_name("logout").click()
-    """
 
     def test_add_substitutes(self):
         self.driver.get(f"{self.live_server_url}/")
@@ -112,4 +110,5 @@ class TestSelenium(StaticLiveServerTestCase):
         # Check if previous save is at user saves page.
         self.driver.find_element_by_name("my_substitutes").click()
         self.assertTrue("Nocciolata" in self.driver.page_source)
-        # Vérifier le nom sauvegardé en fonction du nom produit récupéré dans la page substitutes
+        # Vérifier le nom sauvegardé en fonction
+        # du nom produit récupéré dans la page substitutes
