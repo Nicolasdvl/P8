@@ -41,6 +41,7 @@ Launch the local host:
 ## Tests
 ### Fixtures
 Users: authentification/fixtures/test_users.json
+Raw password in users fixtures : mdp, 1234, azert
 Products: products/fixtures/test_products.json
 Categories: products/fixtures/test_categories.json
 ### Launch tests
