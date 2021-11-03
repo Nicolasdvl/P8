@@ -46,7 +46,6 @@ class SignupForm(forms.ModelForm):
         except User.DoesNotExist:
             pass
         else:
-            print("reach")
             raise ValidationError(
                 "Un compte possède déjà ce nom d'utilisateur."
             )
