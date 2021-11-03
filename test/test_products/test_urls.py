@@ -20,7 +20,7 @@ class TestProductsUrls(TestCase):
         cls.saves = cls.user.get_saves()
         cls.subs = cls.product.get_subs_list()
 
-    def set_up(self):
+    def setUp(self):
         """Initiate django client test."""
         self.client = Client()
 

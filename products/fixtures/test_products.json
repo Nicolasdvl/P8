@@ -65,5 +65,22 @@
                 1
             ]
         }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "name": "pepsi max",
+            "nutriscore": "c",
+            "image": "",
+            "brand": "",
+            "categories": [
+                1,
+                2
+            ],
+            "users_saves": [
+                2
+            ]
+        }
     }
 ]
