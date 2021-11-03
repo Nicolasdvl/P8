@@ -58,7 +58,10 @@ class Product(models.Model):
         relevant_category = Category.objects.get(name=categories_list[0][1])
         products_list = []
         for product in relevant_category.product_set.all():
-            if product.name != self.name:
+            if (
+                product.name != self.name
+                and product.nutriscore <= self.nutriscore
+            ):
                 products_list.append((product.nutriscore, product))
         products_list.sort(key=self.sort_by_this, reverse=False)
         substitutes = []
