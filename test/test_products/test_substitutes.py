@@ -21,7 +21,6 @@ class TestSubstitutes(TestCase):
 
     def test_cocazero_return_pepsimax(self):
         """'perrier' share category with 'coca zero' and has better score."""
-        print(self.cocazero.get_subs_list())
         self.assertIn(self.pepsimax, self.cocazero.get_subs_list())
 
     def test_cocazero_not_return_pizza(self):

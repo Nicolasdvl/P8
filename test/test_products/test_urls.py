@@ -1,8 +1,11 @@
-from django.test import Client, TestCase
+from django.test import Client, TestCase, override_settings
 from products.models import Product
 from authentification.models import User
 
 
+@override_settings(
+    STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
+)
 class TestProductsUrls(TestCase):
     """Test urls from products app."""
 

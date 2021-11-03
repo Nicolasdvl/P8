@@ -1,6 +1,9 @@
-from django.test import Client, TestCase
+from django.test import Client, TestCase, override_settings
 
 
+@override_settings(
+    STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
+)
 class TestCoreUrls(TestCase):
     """Test urls from core app."""
 
