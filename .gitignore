@@ -1,2 +1,4 @@
 .env
 .coverage
+.env.prod
+.env.prod.db
