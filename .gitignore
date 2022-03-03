@@ -2,3 +2,6 @@
 .coverage
 .env.prod
 .env.prod.db
+docker-compose.prod.yml
+Dockerfile.prod
+entrypoint.sh
