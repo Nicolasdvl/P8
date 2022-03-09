@@ -4,3 +4,4 @@ python-dotenv>=0.2.0
 gunicorn>=20.1.0
 requests>=2.26.0
 progress>=1.6
+selenium>=4.0.0

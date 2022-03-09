@@ -1,4 +1,10 @@
+.vscode
 .env
 .coverage
 .env.prod
 .env.prod.db
+.gitignore
+Pipfile
+Pipfile.lock
+README.md
+staticfiles
