@@ -1,0 +1,11 @@
+<!doctype html>
+
+<html lang="fr">
+
+<form autocomplete="off" action="/product/" method="post" id="form">
+    <div class="autocomplete" style="width:300px;">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" id="submit_search">
+    </div>
+</form>

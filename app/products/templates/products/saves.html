@@ -1,0 +1,28 @@
+<!doctype html>
+
+<html lang="fr">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Pur Beurre</title>
+    <meta name="description" content="Trouvez un produit de substitution pour ceux que vous consommez tous les jours.">
+    <meta name="author" content="Daval Nicolas">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/boot_creative_theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+    {% include 'core/nav.html' %}
+    <section class="page-section">
+        <div class="container">
+            {% for product in products %}
+            <p class="product">{{product.name}}</p>
+            {% endfor %}
+
+        </div>
+    </section>
+</body>

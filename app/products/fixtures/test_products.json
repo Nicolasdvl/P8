@@ -1,0 +1,86 @@
+[
+    {
+        "model": "products.product",
+        "pk": 1,
+        "fields": {
+            "name": "coca zero",
+            "nutriscore": "c",
+            "image": "",
+            "brand": "",
+            "categories": [
+                1,
+                2
+            ],
+            "users_saves": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 2,
+        "fields": {
+            "name": "perrier",
+            "nutriscore": "a",
+            "image": "",
+            "brand": "",
+            "categories": [
+                2
+            ],
+            "users_saves": [
+                1,
+                2
+            ]
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 3,
+        "fields": {
+            "name": "coca",
+            "nutriscore": "d",
+            "image": "",
+            "brand": "",
+            "categories": [
+                1,
+                2
+            ],
+            "users_saves": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 4,
+        "fields": {
+            "name": "pizza 3 fromages",
+            "nutriscore": "d",
+            "image": "",
+            "brand": "",
+            "categories": [
+                3
+            ],
+            "users_saves": [
+                1
+            ]
+        }
+    },
+    {
+        "model": "products.product",
+        "pk": 5,
+        "fields": {
+            "name": "pepsi max",
+            "nutriscore": "c",
+            "image": "",
+            "brand": "",
+            "categories": [
+                1,
+                2
+            ],
+            "users_saves": [
+                2
+            ]
+        }
+    }
+]

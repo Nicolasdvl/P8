@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html lang="fr">
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Pur Beurre</title>
+    <meta name="description" content="Trouvez un produit de substitution pour ceux que vous consommez tous les jours.">
+    <meta name="author" content="Daval Nicolas">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/boot_creative_theme.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    {% include 'core/nav.html' %}
+
+    <header class="masthead">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center justify-content-center text-center">
+                <div class="col-lg-10 align-self-end">
+                    <h1 class="text-uppercase text-white font-weight-bold">Du gras, oui, mais de qualité !</h1>
+                    <hr class="divider my-4" />
+                </div>
+                <div class="col-lg-8 align-self-baseline">
+                    <h2 class="text-center mt-0">Trouvez un produit de substitution pour ceux que vous consommez tous
+                        les jours.</h2>
+                    {% include 'search/form.html' %}
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <section class="page-section bg-primary">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="text-white mt-0">Collette et Rémy</h2>
+                    <hr class="divider light my-4" />
+                    <p class="text-white-50 mb-4">Pur Beurre est l'initiative de deux amoureux de la gastronomie
+                        française, Colette Tatou et Rémy, que vous avez déjà certainement rencontrés dans notre
+                        excellent restaurant Ratatouille. </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="{% static 'assets/img/colette.png' %}" alt="collette" id="presentation_img" />
+                            <a>Collette</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{% static 'assets/img/remy.jpg' %}" alt="remy" id="presentation_img" />
+                            <a>Rémy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="page-section" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Contactez-nous !</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="" alt="tel_icon" />
+                            <a>06.00.00.00.00</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="" alt="mail_icon" />
+                            <a>purbeurre@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <a>Mentions légales</a>
+                </div>
+                <div class="col-md-6 text-right">
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+{% csrf_token %}
+<script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+</script>
+<script src="{% static 'js/boot_script.js' %}"></script>
+<script src="{% static 'js/autocomplete.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>

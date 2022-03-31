@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="fr">
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-triger" href="/"><img src="{% static '/assets/img/logo_pur_beurre.png' %}"
+                alt="logo" id="logo_img" />Pur
+            Beurre</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    {% include 'search/form.html' %}
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'account' %}"
+                        name="my_account">Mon compte</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'my_substitutes' %}"
+                        name="my_substitutes">Mes
+                        aliments</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"
+                        name="logout">Déconnexion</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    {% include 'search/form.html' %}
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'login' %}" name="login">Se
+                        connecter</a>
+                </li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'signup' %}" name="signup">Créer
+                        un compte</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
