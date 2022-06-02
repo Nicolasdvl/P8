@@ -21,8 +21,9 @@ services:
     env_file:
       - ./.env.prod.db
   nginx:
-    build: ./nginx
+    image: nginx:latest
     volumes:
+      - ./nginx/:/etc/nginx/conf.d/:ro
       - static_volume:/home/app/web/staticfiles
     ports:
       - 80:80
