@@ -24,3 +24,5 @@ python manage.py migrate
 echo "Collect static files"
 
 python manage.py collectstatic --noinput
+
+exec "$@"
