@@ -2,7 +2,9 @@ name: CI actions
 
 on: 
   push:
-    branches: [deploiement]
+    branches:
+      - main
+      - deploiement
 
 jobs:
 

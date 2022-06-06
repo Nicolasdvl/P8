@@ -1,2 +1,8 @@
 .env.prod
 .env.prod.db
+<<<<<<< HEAD
+=======
+docker-compose.prod.yml
+Dockerfile.prod
+entrypoint.sh
+>>>>>>> 3c83c81f9a7b4408d4220c295524d7c697825086
