@@ -77,13 +77,13 @@ jobs:
           export ALLOWED_HOSTS=localhost
           export GITHUB_WORKFLOW=True
           export MODE=workflow
-          python manage.py makemigrations
-          python manage.py migrate
-          python manage.py migrate --run-syncdb
-          python manage.py check
+          python app/manage.py makemigrations
+          python app/manage.py migrate
+          python app/manage.py migrate --run-syncdb
+          python app/manage.py check
       - name: Run tests
         run: |
-            python manage.py test
+            python app/manage.py test
         env:
           DATABASE_URL: postgres://${{ matrix.database-user }}:${{ matrix.database-password }}@${{ matrix.database-host }}:${{ matrix.database-port }}/${{ matrix.database-name }}
           SECRET_KEY: test-secret-key
