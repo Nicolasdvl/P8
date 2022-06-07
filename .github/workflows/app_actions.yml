@@ -73,5 +73,15 @@ jobs:
         run: |
           python app/manage.py migrate      
       - name: Run tests
+        env:
+          DEBUG: 1
+          DJANGO_ALLOWED_HOSTS: localhost
+          DJANGO_KEY: secret-key
+          SQL_ENGINE: ${{ matrix.database-engine }}
+          SQL-DATABASE: ${{ matrix.database-name }}
+          SQL_USER: ${{ matrix.database-user }}
+          SQL_PASSWORD: ${{ matrix.database-password }}
+          SQL_HOST: ${{ matrix.database-host }}
+          SQL_PORT: ${{ matrix.database-port }}
         run: |
           python app/manage.py test
