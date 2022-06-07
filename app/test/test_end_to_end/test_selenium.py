@@ -11,7 +11,7 @@ import os
 import unittest
 
 
-@unittest.skipIf(bool(os.environ.get("CI")))
+@unittest.skipIf(bool(os.environ.get("CI")), "skip in github actions")
 @override_settings(
     STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
 )
