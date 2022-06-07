@@ -83,5 +83,6 @@ jobs:
           SQL_PASSWORD: ${{ matrix.database-password }}
           SQL_HOST: ${{ matrix.database-host }}
           SQL_PORT: ${{ matrix.database-port }}
+          CI: $CI
         run: |
-          python app/manage.py test test -- -test_selenium
+          python app/manage.py test test

@@ -8,8 +8,10 @@ from django.test import override_settings
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from dotenv import load_dotenv
 import os
+import unittest
 
 
+@unittest.skipIf(bool(os.environ.get("CI")))
 @override_settings(
     STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
 )
