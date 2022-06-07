@@ -84,4 +84,4 @@ jobs:
           SQL_HOST: ${{ matrix.database-host }}
           SQL_PORT: ${{ matrix.database-port }}
         run: |
-          python app/manage.py test
+          python app/manage.py test test
