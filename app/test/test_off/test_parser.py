@@ -15,7 +15,7 @@ class SetUpMocks:
 
     def return_fake_json(self):
         """Load a fake response from 'mock_requests.json'."""
-        with open("test/test_off/mock_requests.json", "r") as file:
+        with open("app/test/test_off/mock_requests.json", "r") as file:
             content = json.load(file)
         return content
 
