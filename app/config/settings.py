@@ -158,8 +158,8 @@ CELERY_RESULT_BACKEND = "redis://redis:6379"
 # Schedule tasks
 
 CELERY_BEAT_SCHEDULE = {
-    "sample_task": {
-        "task": "config.tasks.sample_task",
-        "schedule": crontab(minute="*/1"),
+    "update_db_task": {
+        "task": "config.tasks.update_db_task",
+        "schedule": crontab(minute=0, hour=3, day_of_week=1),
     },
 }
