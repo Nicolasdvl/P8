@@ -5,11 +5,13 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile.prod
-    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000
+    command: newrelic-admin run-program gunicorn config.wsgi:application --bind 0.0.0.0:8000 --reload
     volumes:
       - static_volume:/home/app/web/staticfiles
     expose:
       - 8000
+    environment:
+      - NEW_RELIC_CONFIG_FILE=newrelic.ini
     env_file:
       - ./.env.prod
     depends_on:
@@ -54,6 +56,24 @@ services:
       - ./.env.prod
     depends_on:
       - redis
+  agent:
+    container_name: newrelic-infra
+    build:
+      context: ./newrelic-infra-setup
+      dockerfile: newrelic-infra.dockerfile
+    cap_add:
+      - SYS_PTRACE
+    network_mode: host
+    pid: host
+    privileged: true
+    volumes:
+      - "/:/host:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - ./nginx/:/etc/nginx/conf.d/:ro
+      - /var/log/newrelic-infra/:/var/log/newrelic-infra/
+    env_file:
+      - ./.env.prod
+    restart: unless-stopped
 volumes:
   postgres_data:
   static_volume:
