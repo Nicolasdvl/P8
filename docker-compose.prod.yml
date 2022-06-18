@@ -7,7 +7,6 @@ services:
       dockerfile: Dockerfile.prod
     command: newrelic-admin run-program gunicorn config.wsgi:application --bind 0.0.0.0:8000 --reload
     volumes:
-      - ./app/:/home/app/web/
       - static_volume:/home/app/web/staticfiles
     expose:
       - 8000
@@ -68,7 +67,6 @@ services:
     pid: host
     privileged: true
     volumes:
-      - ./app/:/home/app/web/
       - "/:/host:ro"
       - "/var/run/docker.sock:/var/run/docker.sock"
     env_file:
