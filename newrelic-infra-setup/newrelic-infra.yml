@@ -1,6 +1,1 @@
 license_key: NRIA_LICENSE_KEY
-log:
-  file: '/var/log/newrelic-infra/newrelic-infra.log'
-  level: info
-  forward: true
-  stdout: true
