@@ -23,17 +23,18 @@
                 <div>
                     {% csrf_token %}
                     {{ LoginForm }}
-                    <input type="submit" name="submit_logs" id="submit">
+                    <input type="submit" name="submit_logs" id="submit" value="Se connecter" class="login-form">
                 </div>
             </form>
         </div>
+        <hr class="divider">
         {% if messages %}
         {% for message in messages %}
         <p>{{message}}</p>
         {% endfor %}
         {% endif %}
         <div class="container">
-            <a href="/signup">Create an account</a>
+            <button onclick="location.href='/signup'" class="redirect-signin">Créer un compte</button>
         </div>
     </section>
 </body>

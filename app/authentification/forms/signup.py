@@ -10,14 +10,27 @@ from authentification.models import User
 
 class SignupForm(forms.ModelForm):
     """Declaration of form fields to build a sign up form."""
-
+    username = forms.CharField(
+        label="Nom d'utilisateur ", widget=forms.TextInput(
+            attrs={"id": "username", "class": "signin-form"}
+            ),
+    )
+    email = forms.EmailField(
+        label="E-mail ", widget=forms.TextInput(
+            attrs={"id": "email", "class": "signin-form"}
+            ),
+    )
     password = forms.CharField(
-        label="Password",
-        widget=forms.PasswordInput(attrs={"id": "password"}),
+        label="Mot de passe ",
+        widget=forms.PasswordInput(
+            attrs={"id": "password", "class": "signin-form"}
+            ),
     )
     confirme = forms.CharField(
-        label="Confirme your password",
-        widget=forms.PasswordInput(attrs={"id": "confirme"}),
+        label="Confirmation du mot de passe ",
+        widget=forms.PasswordInput(
+            attrs={"id": "confirme", "class": "signin-form"}
+            ),
     )
 
     class Meta:
