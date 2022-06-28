@@ -172,7 +172,7 @@ CELERY_BEAT_SCHEDULE = {
 # Sentry integration
 
 sentry_sdk.init(
-    dsn="https://c8af00951ed64d7ea5ef1baa94b8be34@o1292167.ingest.sentry.io/6513634",
+    dsn=os.environ.get("SENTRY_DSN"),
     integrations=[
         DjangoIntegration(),
     ],
