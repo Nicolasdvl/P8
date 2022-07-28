@@ -8,6 +8,7 @@ or a 404 error, or an XML document, or an image . . .
 from django.shortcuts import render, redirect
 from authentification.forms.signup import SignupForm
 from authentification.forms.login import LoginForm
+from search.search import SearchForm
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -22,7 +23,8 @@ def signup(request):
             return redirect("index")
     else:
         form = SignupForm()
-    context = {"SignupForm": form}
+    search_form = SearchForm()
+    context = {"SignupForm": form, "SearchForm": search_form}
     return render(request, "authentification/signup.html", context)
 
 
@@ -39,7 +41,8 @@ def login_user(request):
                 return redirect("index")
     else:
         form = LoginForm()
-    context = {"LoginForm": form}
+    search_form = SearchForm()
+    context = {"LoginForm": form, "SearchForm": search_form}
     return render(request, "authentification/login.html", context)
 
 
@@ -51,4 +54,6 @@ def logout_user(request):
 
 def user_page(request):
     """Render user.html."""
-    return render(request, "authentification/user.html")
+    search_form = SearchForm()
+    context = {"SearchForm": search_form}
+    return render(request, "authentification/user.html", context)

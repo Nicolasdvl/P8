@@ -1,11 +1,11 @@
 <!doctype html>
 
 <html lang="fr">
-
+{% load static %}
 <form autocomplete="off" action="/product/" method="post" id="form">
-    <div class="autocomplete" style="width:300px;">
+    <div class="autocomplete">
         {% csrf_token %}
-        {{ form }}
+        {{ SearchForm }}
         <input type="submit" id="submit_search">
     </div>
 </form>

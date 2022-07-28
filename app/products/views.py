@@ -17,11 +17,11 @@ from search.search import SearchForm
 def substitutes(request, id):
     """Return a html page with a list of products and a form."""
     product = Product.objects.get(id=id)
-    form = SearchForm()
+    search_form = SearchForm()
     context = {
         "product": product,
         "substitutes": product.get_subs_list(),
-        "form": form,
+        "SearchForm": search_form,
     }
     if "submit_save" in request.POST:
         submit = request.POST.get("submit_save")
@@ -36,7 +36,8 @@ def substitutes(request, id):
 def details(request, id):
     """Return a html page with details of a product selected."""
     product = Product.objects.get(id=id)
-    context = {"product": product}
+    search_form = SearchForm()
+    context = {"product": product, "SearchForm": search_form}
     return render(request, "products/details.html", context)
 
 
@@ -44,5 +45,6 @@ def details(request, id):
 def my_substitutes(request):
     """Return a html page with a list of products saved by user."""
     user = request.user
-    context = {"products": user.get_saves()}
+    search_form = SearchForm()
+    context = {"products": user.get_saves(), "SearchForm": search_form}
     return render(request, "products/saves.html", context)

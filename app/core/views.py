@@ -11,5 +11,5 @@ from search.search import SearchForm
 
 def index(request):
     """Render index.html."""
-    form = SearchForm()
-    return render(request, "core/index.html", {"form": form})
+    search_form = SearchForm()
+    return render(request, "core/index.html", {"SearchForm": search_form})
