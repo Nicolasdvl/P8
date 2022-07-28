@@ -19,10 +19,18 @@
     {% include 'core/nav.html' %}
     <section class="page-section">
         <div class="container">
-            {% for product in products %}
-            <p class="product">{{product.name}}</p>
-            {% endfor %}
-
+            {% if products %}
+            <div class="card-header"> Mes substituts </div>
+            <ul class="list-group">
+                {% for product in products %}
+                <li class="list-group-item"><img class="substituts_img" src={{product.image}}>
+                    <div>{{product.name}}</div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>Vous n'avez pas encore de substitus sauvegardés</p>
+            {% endif %}
         </div>
     </section>
 </body>

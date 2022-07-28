@@ -27,6 +27,7 @@
 
 .login-form,
 .signin-form,
+.redirect-substitutes,
 .redirect-signin {
     display: inline-block;
     width: 100%;
@@ -59,4 +60,16 @@
     height: 100%;
     width: 100%;
     object-fit: contain;
+}
+
+.substituts_img {
+    max-width: 5em;
+    max-height: 5em;
+
+}
+
+.substituts_name {
+    position: absolute;
+    margin-top: 1em;
+    margin-left: 5em;
 }

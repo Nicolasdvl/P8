@@ -20,6 +20,12 @@
         <div class="container">
             {% if user.is_authenticated %}
             <p> Bienvenue {{user.username}}</p>
+
+            <p>
+                E-mail : {{user.email}}
+            </p>
+            <button onclick="location.href='/account/my_substitutes'" class="redirect-substitutes"> Voir mes substituts
+                sauvegardés</button>
             {% else %}
             <p>Vous êtes déconnecté. Cliquez <a href="login">ici</a> pour vous connecter.</p>
             {% endif %}
