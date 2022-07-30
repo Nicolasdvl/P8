@@ -12,6 +12,11 @@ import unittest
 
 
 @unittest.skipIf(bool(os.environ.get("CI")), "skip in github actions")
+@unittest.skipIf(
+    bool(os.environ.get("BROWSER_LOCATION")) is False
+    or bool(os.environ.get("DRIVER_PATH")) is False,
+    "skip if BROSWER or DRIVER not in env"
+    )
 @override_settings(
     STATICFILES_STORAGE="django.contrib.staticfiles.storage.StaticFilesStorage"
 )
@@ -44,7 +49,7 @@ class TestSelenium(StaticLiveServerTestCase):
         super().tearDownClass()
 
     def test_login_logout(self):
-        """Test user path"""
+        """Test user path."""
         self.driver.get(f"{self.live_server_url}/")
         self.assertEqual(self.driver.current_url, f"{self.live_server_url}/")
         self.driver.find_element_by_name("login").click()
