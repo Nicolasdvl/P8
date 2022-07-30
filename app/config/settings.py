@@ -14,6 +14,7 @@ from pathlib import Path
 from celery.schedules import crontab
 import config.tasks
 import os
+import sys
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from dotenv import load_dotenv
@@ -97,6 +98,11 @@ DATABASES = {
         "PORT": os.environ.get("SQL_PORT"),
     }
 }
+
+# Database for tests
+if 'test' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = ':memory:'
 
 AUTHENTICATION_BACKENDS = [
     "authentification.authenticate.EmailAuth",
