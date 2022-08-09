@@ -14,6 +14,12 @@ def index(request):
     search_form = SearchForm()
     return render(request, "core/index.html", {"SearchForm": search_form})
 
+
 def legal(request):
     """Render 'legal_notice.html'."""
     return render(request, "core/legal_notice.html")
+
+
+def contact(request):
+    """Render 'contact.hmtl'."""
+    return render(request, "core/contact.html", {"standalone": True})
