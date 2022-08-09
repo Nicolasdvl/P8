@@ -85,3 +85,7 @@ footer {
     padding-top: 3rem;
     background-color: #f4623a;
 }
+
+a.footer {
+    color: #345a61;
+}

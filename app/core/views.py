@@ -10,6 +10,10 @@ from search.search import SearchForm
 
 
 def index(request):
-    """Render index.html."""
+    """Render 'index.html'."""
     search_form = SearchForm()
     return render(request, "core/index.html", {"SearchForm": search_form})
+
+def legal(request):
+    """Render 'legal_notice.html'."""
+    return render(request, "core/legal_notice.html")
