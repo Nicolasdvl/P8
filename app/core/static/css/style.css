@@ -5,7 +5,7 @@
 }
 
 #mainNav {
-    background: rgb(196, 85, 37);
+    background-color: #f4623a;
 }
 
 /* Index */
@@ -21,6 +21,10 @@
     background: rgba(200, 200, 200, 0.2);
 
 
+}
+
+.icon {
+    max-width: 2em;
 }
 
 /* Form */
@@ -72,4 +76,12 @@
     position: absolute;
     margin-top: 1em;
     margin-left: 5em;
+}
+
+/* Footer */
+
+footer {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    background-color: #f4623a;
 }
