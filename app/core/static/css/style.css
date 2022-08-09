@@ -78,6 +78,18 @@
     margin-left: 5em;
 }
 
+/* Assure empty section height to push footer */
+
+section#login,
+section#signup,
+section#user_account,
+section#details,
+section#saves {
+    height: 100%;
+}
+
+
+
 /* Footer */
 
 footer {

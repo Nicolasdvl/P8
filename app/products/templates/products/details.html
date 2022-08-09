@@ -17,12 +17,13 @@
 
 <body>
     {% include 'core/nav.html' %}
-    <section class="page-section">
+    <section class="page-section" id="details">
         <div class="container">
             <h1>{{product.name}}</h1>
         </div>
     </section>
 </body>
+{% include 'core/footer.html' %}
 <script>
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 </script>

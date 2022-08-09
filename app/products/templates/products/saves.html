@@ -17,7 +17,7 @@
 
 <body>
     {% include 'core/nav.html' %}
-    <section class="page-section">
+    <section class="page-section" id="saves">
         <div class="container">
             {% if products %}
             <div class="card-header"> Mes substituts </div>
@@ -34,6 +34,7 @@
         </div>
     </section>
 </body>
+{% include 'core/footer.html' %}
 <script>
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 </script>
